@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis instancias de EC2</title>
+</head>
+<body>
+    <h1>Mis instancias de EC2</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Tipo de instancia</th>
+            <th>IP pública</th>
+            <th>Estado</th>
+            <th>Acción</th>
+        </tr>
+        {% for instance in instances %}
+        <tr>
+            <td>{{instance.id}}</td>
+            <td>{{instance.instance_type}}</td>
+            <td>{{instance.public_ip_address}}</td>
+            <td>{{instance.state['Name']}}</td>
+            <td>
+                <form action="/action" method="POST">
+                    <input type="hidden" name="id" value="{{instance.id}}">
+                    {% if instance.state['Name'] == 'running' %}
+                    <input type="submit" name="action" value="Detener">
+                    {% elif instance.state['Name'] == 'stopped' %}
+                    <input type="submit" name="action" value="Iniciar">
+                    {% endif %}
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
