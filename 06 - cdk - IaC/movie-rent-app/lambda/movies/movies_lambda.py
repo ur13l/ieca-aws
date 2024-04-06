@@ -57,7 +57,7 @@ def handler(event, context):
 
         headers = {
             "accept": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYjQ3YjM1YzljZWI5NTdmMDc2MzdlMTcxZTJjYTZjYSIsInN1YiI6IjY1ZmQyNTNjNzcwNzAwMDE3YzBhNDZiYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sVzcqDkafYejKdLLIQuZe9l1Pm-7i7cPqVrYGCv7BW0"
+            "Authorization": "Bearer <TMDB_TOKEN>"
         }
 
         response = requests.get(url, headers=headers)
